@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useRef } from "react";
 import { useMemo } from "react";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { FiAlignRight, FiAlignLeft } from "react-icons/fi";
+// import { FiAlignLeft, FiAlignRight } from "react-icons/fi";
+// import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import useWindowDimensions from "../hooks/useWindowsDimention";
 import styled from "styled-components";
 
@@ -44,15 +46,16 @@ const SidebarPaner = styled.div`
 const MenuController = styled.div`
   position: absolute;
   top: 5px;
-  right: -10px;
+  // right: 12px;
   width: 25px;
   height: 25px;
-  background-color: #fff;
-  border-radius: 50%;
+  // background-color: #fff
+  // border-radius: 50%;
+  background: trasparent,
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #008fa0;
+  // border: 2px solid #008fa0;
   cursor: pointer;
   z-index: 3;
 `;
@@ -98,17 +101,17 @@ const SpliTemplateScreen = ({ children }) => {
   return (
     <Container>
       <NavbarPaner openedMenu={openedMenu} minViewPort={minViewPort}>
+      <MenuController onClick={handleResize}>
+        {openedMenu ? (
+          <FiAlignRight className="menu-controller-icon col mx-4 fs-1 bg-transparent" />
+        ) : (
+          <FiAlignLeft className="menu-controller-icon mx-4 fs-1 bg-transparent" />
+        )}
+      </MenuController>
         {navbar}
       </NavbarPaner>
       <BodyContainer>
         <SidebarPaner openedMenu={openedMenu} ref={sidebarRef}>
-          <MenuController onClick={handleResize}>
-            {openedMenu ? (
-              <AiOutlineArrowRight className="menu-controller-icon" />
-            ) : (
-              <AiOutlineArrowLeft className="menu-controller-icon" />
-            )}
-          </MenuController>
           {sidebar}
         </SidebarPaner>
         <ContaintOutlet openedMenu={openedMenu} minViewPort={minViewPort}>

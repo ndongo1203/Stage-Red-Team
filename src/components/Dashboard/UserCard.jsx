@@ -3,36 +3,35 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-// import Image from "react-bootstrap/Image";
 import { FaRegCalendarCheck } from "react-icons/fa";
-import profil1 from "../../assets/images/avatar-1.jpg"
+import profile1 from "../../assets/images/avatar-1.jpg";
 
 function UserCard() {
     const recentUsers = [
         {
-            title: "Recent User",
-            profile: { profil1 },
+            title: "Recent User", // Added title property here
+            profile: profile1,
             username: "Isabella Christensen",
             description: "Lorem Ipsum is…",
             date: "2024-01-30",
             time: "15:45",
         },
         {
-            profile: "../../assets/images/avatar-1.jpg",
+            profile: profile1,
             username: "AliceSmith",
             description: "Passionate developer",
             date: "2024-01-29",
             time: "12:30",
         },
         {
-            profile: "../../assets/images/avatar-1.jpg",
+            profile: profile1,
             username: "AliceSmith",
             description: "Passionate developer",
             date: "2024-01-29",
             time: "12:30",
         },
         {
-            profile: "../../assets/images/avatar-1.jpg",
+            profile: profile1,
             username: "AliceSmith",
             description: "Passionate developer",
             date: "2024-01-29",
@@ -49,7 +48,7 @@ function UserCard() {
 
     return (
         <div>
-            <Row>
+            <Row className="mb-4">
                 {/* First Card */}
                 <Col lg={8}>
                     {recentUsers.map((user, idx) => (
@@ -58,6 +57,17 @@ function UserCard() {
                             <Card.Body className="shadow-sm">
                                 <Row className="align-items-center">
                                     <Col>
+                                        <div className="">
+                                            <img src={user.profile} alt="" style={{
+                                                width: "60px",
+                                                height: "60px",
+                                                borderRadius: "100%",
+                                                objectFit: "cover",
+                                            }}
+                                            />
+                                        </div>
+                                    </Col>
+                                    <Col className="me-5">
                                         <div className="d-flex">
                                             {user.username} <br />
                                             {user.description}
@@ -69,7 +79,8 @@ function UserCard() {
                                     <Col>
                                         <Button variant="primary" size="sm" className="">
                                             Reject
-                                        </Button> &nbsp;
+                                        </Button>{" "}
+                                        &nbsp;
                                         <Button variant="secondary" size="sm">
                                             Approve
                                         </Button>
@@ -80,12 +91,12 @@ function UserCard() {
                     ))}
                 </Col>
 
-                <Col lg={4}>
+                <Col lg={4} className="mb-4">
                     <Card>
                         <Card.Body>
                             <div className="d-flex justify-content-between">
-                            <Card.Title>{upcomingEvent.title}</Card.Title>
-                            <Button variant="primary">34%</Button>
+                                <Card.Title>{upcomingEvent.title}</Card.Title>
+                                <Button variant="primary">{upcomingEvent.progress}%</Button>
                             </div>
                             <p>{upcomingEvent.competitors} Competitors</p>
                             <p>{upcomingEvent.description}</p>

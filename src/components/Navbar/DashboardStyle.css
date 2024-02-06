@@ -1,4 +1,50 @@
 .Nav-end{
     position: relative;
-    left: 130vh;
+    left: 110vh;
 }
+
+.list-inline-item{
+    list-style: none !important;
+    text-decoration: none !important;
+    color: #6c757d !important;
+}
+
+@media (max-width: 767px) {
+    .Nav-end{
+        position: relative;
+        left: 11vh;
+    }
+
+    .DrodownNavbar {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    .menu-controller-icon{
+        display: none;
+    }
+
+    .imgblock img{
+        display: block !important;
+    }
+
+    .titleSidebar{
+        display: none !important;
+    }
+
+    /* .DropdownProfile .profile-image{
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 100%;
+    } */
+
+    .PanerSidebar{
+        line-height: 100vh !important;
+        margin-bottom: 4vh !important;
+    }
+
+    .textFooter{
+        display: flex;
+        justify-content: center;
+    }
+  }

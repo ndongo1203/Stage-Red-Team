@@ -37,7 +37,6 @@ function ContenuDashboard() {
           <Col key={idx}>
             <Card className="border-0 shadow-sm p-4">
               <Card.Body>
-                {/* Utiliser les propriétés pour personnaliser chaque carte */}
                 <Card.Title>{data.title}</Card.Title>
                 <div className="d-flex justify-content-between">
                 <div className="d-flex">
@@ -46,7 +45,7 @@ function ContenuDashboard() {
                 </div>
                   <Card.Text>{data.texte}</Card.Text>
                 </div>
-                <ProgressBar now={data.now} label={`${data.now}%`} visuallyHidden />
+                <ProgressBar now={data.now} label={`${data.now}%`} visuallyHidden style={{ height: "10px" }} />
               </Card.Body>
             </Card>
           </Col>

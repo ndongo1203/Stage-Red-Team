@@ -22,8 +22,8 @@ const SidebarComponent = ({ bgColor, activeLinkColor, activeLinkBgColor, colorOn
           borderRight: "1px solid rgba(0,0,0,0.1)",
         }}>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <p><img src={Logo} alt="logo" className="img-fluid" /></p>
-        <h3>Datta Able</h3>
+        <p className="imgblock"><img src={Logo} alt="logo" className="img-fluid" /></p>
+        <h3 className="titleSidebar">Datta Able</h3>
       </div>
         <ResourceDataMap
           resourceData={links}
