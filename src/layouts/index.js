@@ -59,40 +59,43 @@ const ContentOutlet = styled.div`
   transition: padding 0.3s;
   overflow-x: hidden;
   z-index: 1;
-  padding: ${({ openedMenu }) => (openedMenu ? "80px 10px 0 0" : "70px 10px 0 250px")};
+  padding: ${({ openedMenu }) => (openedMenu ? "70px 10px 0 0" : "70px 10px 0 250px")};
 
   @media (max-width: 900px) {
-    padding-left: ${({ openedMenu }) => (openedMenu ? "30px" : "20px")}; /* Ajustement du padding en mode réactif */
+    padding-left: ${({ openedMenu }) => (openedMenu ? "70px" : "10px")}; /* Ajustement du padding en mode réactif */
   }
 `;
 
 const SpliTemplateScreen = ({ children }) => {
   const [openedMenu, setOpenedMenu] = useState(false);
   const [minViewPort, setMinViewPort] = useState(false);
-  // Ne pas utiliser l'état sidebarVisible
+  const [sidebarVisible, setSidebarVisible] = useState(true);
 
   const sidebarRef = useRef(null);
   const [navbar] = children;
 
   const handleToggleSidebar = () => {
-    setOpenedMenu((prevState) => !prevState);
+    setSidebarVisible((prevState) => !prevState);
   };
 
   const { width } = useWindowDimensions();
+  // const handleResize = () => {
+  //   setOpenedMenu((v) => !v);
+  // };
 
   useMemo(() => {
     if (width <= 900) {
       setMinViewPort(true);
-      setOpenedMenu(true); // Ouverture automatique du menu en mode responsive
+      setOpenedMenu(true);
     } else {
       setMinViewPort(false);
-      setOpenedMenu(false); // Fermeture automatique du menu en mode bureau
+      setOpenedMenu(false);
     }
   }, [width]);
 
   return (
     <Container className="MenuDashboard">
-      <NavbarPanel openedMenu={openedMenu} minViewPort={minViewPort}>
+      <NavbarPanel openedMenu={!sidebarVisible} minViewPort={minViewPort}>
         <MenuController id="IconeNavbar" onClick={handleToggleSidebar}>
           {openedMenu ? (
             <FiAlignRight className="menu-controller-icon col mx-4 fs-1 bg-transparent bg-danger" />
@@ -103,67 +106,15 @@ const SpliTemplateScreen = ({ children }) => {
         {navbar}
       </NavbarPanel>
       <BodyContainer>
-        {/* Utilisez openedMenu pour contrôler la visibilité du sidebar */}
-        {openedMenu && (
+        {sidebarVisible && (
           <SidebarPanel className="MySidebar" openedMenu={openedMenu} ref={sidebarRef}>
             {children[1]}
           </SidebarPanel>
         )}
-        <ContentOutlet openedMenu={!openedMenu}>{children[2]}</ContentOutlet>
+        <ContentOutlet openedMenu={!sidebarVisible}>{children[2]}</ContentOutlet>
       </BodyContainer>
     </Container>
   );
 };
-
-// const SpliTemplateScreen = ({ children }) => {
-//   const [openedMenu, setOpenedMenu] = useState(false);
-//   const [minViewPort, setMinViewPort] = useState(false);
-//   const [sidebarVisible, setSidebarVisible] = useState(true);
-
-//   const sidebarRef = useRef(null);
-//   const [navbar] = children;
-
-//   const handleToggleSidebar = () => {
-//     setSidebarVisible((prevState) => !prevState);
-//   };
-
-//   const { width } = useWindowDimensions();
-//   // const handleResize = () => {
-//   //   setOpenedMenu((v) => !v);
-//   // };
-
-//   useMemo(() => {
-//     if (width <= 900) {
-//       setMinViewPort(true);
-//       setOpenedMenu(true);
-//     } else {
-//       setMinViewPort(false);
-//       setOpenedMenu(false);
-//     }
-//   }, [width]);
-
-//   return (
-//     <Container className="MenuDashboard">
-//       <NavbarPanel openedMenu={!sidebarVisible} minViewPort={minViewPort}>
-//         <MenuController id="IconeNavbar" onClick={handleToggleSidebar}>
-//           {openedMenu ? (
-//             <FiAlignRight className="menu-controller-icon col mx-4 fs-1 bg-transparent bg-danger" />
-//           ) : (
-//             <FiAlignLeft className="menu-controller-icon mx-4 fs-1 bg-transparent" />
-//           )}
-//         </MenuController>
-//         {navbar}
-//       </NavbarPanel>
-//       <BodyContainer>
-//         {sidebarVisible && (
-//           <SidebarPanel className="MySidebar" openedMenu={openedMenu} ref={sidebarRef}>
-//             {children[1]}
-//           </SidebarPanel>
-//         )}
-//         <ContentOutlet openedMenu={!sidebarVisible}>{children[2]}</ContentOutlet>
-//       </BodyContainer>
-//     </Container>
-//   );
-// };
 
 export default SpliTemplateScreen;
