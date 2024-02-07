@@ -29,7 +29,7 @@ const BodyContainer = styled.div`
 `;
 
 const SidebarPanel = styled.div`
-  width: ${({ openedMenu }) => (!openedMenu ? "250px" : "60")};
+  width: ${({ openedMenu }) => (!openedMenu ? "250px" : "250px")};
   height: 100vh;
   position: fixed;
   top: 0px;
@@ -59,17 +59,18 @@ const ContentOutlet = styled.div`
   transition: padding 0.3s;
   overflow-x: hidden;
   z-index: 1;
-  padding: ${({ openedMenu }) => (openedMenu ? "70px 10px 0 0" : "70px 10px 0 250px")};
+  padding: ${({ openedMenu }) => (openedMenu ? "70px 10px 0 0" : "70px 10px 0 0px")};
 
-  @media (max-width: 900px) {
-    padding-left: ${({ openedMenu }) => (openedMenu ? "70px" : "10px")}; /* Ajustement du padding en mode réactif */
-  }
+  // @media (max-width: 900px) {
+  //   padding: ${({ openedMenu }) => (openedMenu ? "70px 10px 0 0" : "70px 10px 0 250px")};
+  //   position: fixed; /* Ajustement du padding en mode réactif */
+  // }
 `;
 
 const SpliTemplateScreen = ({ children }) => {
   const [openedMenu, setOpenedMenu] = useState(false);
   const [minViewPort, setMinViewPort] = useState(false);
-  const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [sidebarVisible, setSidebarVisible] = useState(false);
 
   const sidebarRef = useRef(null);
   const [navbar] = children;
@@ -109,6 +110,13 @@ const SpliTemplateScreen = ({ children }) => {
         {sidebarVisible && (
           <SidebarPanel className="MySidebar" openedMenu={openedMenu} ref={sidebarRef}>
             {children[1]}
+            <MenuController id="IconeSidebar" onClick={handleToggleSidebar}>
+              {openedMenu ? (
+                <FiAlignRight className="menu-controller-icon col mx-4 fs-1 bg-transparent bg-danger" />
+              ) : (
+                <FiAlignLeft className="menu-controller-icon mx-4 fs-1 bg-transparent" />
+              )}
+            </MenuController>
           </SidebarPanel>
         )}
         <ContentOutlet openedMenu={!sidebarVisible}>{children[2]}</ContentOutlet>
