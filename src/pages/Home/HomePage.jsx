@@ -5,7 +5,7 @@ import React from "react"
 
 function HomePage() {
   return (
-    <div>
+    <div className="p-4">
       <div className="">
         <ContenuDashboard />
       </div>

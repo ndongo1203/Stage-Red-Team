@@ -55,9 +55,9 @@ function UserCard() {
                         <Card key={idx} className="border-0">
                             <Card.Title className="p-3">{user.title}</Card.Title>
                             <Card.Body className="shadow-sm">
-                                <Row className="align-items-center">
-                                    <Col>
-                                        <div className="">
+                                <Row className="align-items-center cardWrap mb-4">
+                                    <Col className="me-5 d-flex align-items-center mb-4">
+                                    <div className="">
                                             <img src={user.profile} alt="" style={{
                                                 width: "60px",
                                                 height: "60px",
@@ -66,21 +66,18 @@ function UserCard() {
                                             }}
                                             />
                                         </div>
-                                    </Col>
-                                    <Col className="me-5">
                                         <div className="d-flex">
                                             {user.username} <br />
                                             {user.description}
                                         </div>
                                     </Col>
-                                    <Col>
+                                    <Col className="TimeDate">
                                         {user.date} &nbsp; {user.time}
                                     </Col>
                                     <Col>
                                         <Button variant="primary" size="sm" className="">
                                             Reject
                                         </Button>{" "}
-                                        &nbsp;
                                         <Button variant="secondary" size="sm">
                                             Approve
                                         </Button>
@@ -92,7 +89,7 @@ function UserCard() {
                 </Col>
 
                 <Col lg={4} className="mb-4">
-                    <Card>
+                    <Card className="mb-4">
                         <Card.Body>
                             <div className="d-flex justify-content-between">
                                 <Card.Title>{upcomingEvent.title}</Card.Title>

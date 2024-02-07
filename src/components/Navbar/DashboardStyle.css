@@ -1,7 +1,7 @@
-.Nav-end{
+/* .Nav-end{
     position: relative;
     left: 110vh;
-}
+} */
 
 .list-inline-item{
     list-style: none !important;
@@ -10,19 +10,28 @@
 }
 
 @media (max-width: 767px) {
-    .Nav-end{
+    /* .Nav-end{
         position: relative;
         left: 11vh;
+    } */
+
+    #nav-dropdown-dark-example{
+        margin-left: 30px;
     }
 
-    .DrodownNavbar {
+    #IconeNavbar{
+        margin-left: 40px;
+        margin-top: 10px;
+    }
+
+    /* .DrodownNavbar {
       margin-left: 0 !important;
       margin-right: 0 !important;
-    }
+    } */
 
-    .menu-controller-icon{
+    /* .menu-controller-icon{
         display: none;
-    }
+    } */
 
     .imgblock img{
         display: block !important;
@@ -31,6 +40,25 @@
     .titleSidebar{
         display: none !important;
     }
+
+    /* .MenuDashboard .MySidebard{
+        display
+    } */
+
+
+    .cardWrap{
+        /* display: flex; */
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+        /* text-align: center; */
+        margin-left: 10px;
+        width: 100%;
+    }
+
+    /* .TimeDate{
+        display: flex;
+    } */
 
     /* .DropdownProfile .profile-image{
         width: 30px !important;

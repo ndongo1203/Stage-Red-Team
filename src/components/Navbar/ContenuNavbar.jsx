@@ -8,7 +8,7 @@ import "./DashboardStyle.css"
 function ContenuNavbar() {
     return (
         <div className="container-fluid">
-            <div className="d-flex justify-content-between align-items-center w-100">
+            <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex DrodownNavbar mx-5">
                     <NavDropdown
                         id="nav-dropdown-dark-example"
@@ -27,7 +27,7 @@ function ContenuNavbar() {
                 <div className="d-flex justify-content-end Nav-end">
                     <div className="d-flex justify-content-end align-items-end">
                         {/* Icône de notification */}
-                        <div className="me-4">
+                        <div>
                             <NavDropdown
                                 id="notification-dropdown"
                                 title={<FaBell style={{ fontSize: "1em", color: "#888" }} />}
@@ -44,7 +44,7 @@ function ContenuNavbar() {
                         {/* Icône de paramètre */}
                         <div className="text-end">
                             <NavDropdown
-                                className="ms-2 justify-content-end"
+                                className="ms-4 justify-content-end"
                                 id="settings-dropdown"
                                 title={<FaCog style={{ fontSize: "1em", color: "#888" }} />}
                                 menuVariant="light"
